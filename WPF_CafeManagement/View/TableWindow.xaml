@@ -1,0 +1,107 @@
+﻿<UserControl x:Class="WPF_CafeManagement.View.TableWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"        
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"      
+        DataContext="{Binding TableWindowViewModel, Source={StaticResource Locator}}"
+        Name="tableWindow"
+        Height="700" Width="900" >
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        
+        <Grid.RowDefinitions>  
+            <RowDefinition Height="20*" />
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2.4*"></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+      
+
+        <StackPanel  HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="0" Margin="15,5,5,5">
+            <ItemsControl ItemsSource="{Binding MyCommands}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding DisplayName}"
+                                Width="50" Height="50"
+                                Background="{Binding BgColor}"
+                                FontSize="12"
+                                Padding="0"
+                                CommandParameter="{Binding Id}"
+                                Command="{Binding Command}" Margin="5,5,5,5" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+
+        <DockPanel Grid.Column="1" Grid.Row="0"
+                   Margin="5, 5, 15, 5"
+                   HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition Height="15*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" HorizontalAlignment="Left" Orientation="Horizontal"
+
+                            Margin="5, 5, 5, 10">
+                    <TextBlock Text="Tên bàn: " Margin="0, 0, 10, 0"></TextBlock>
+                    <ComboBox Width="200" Height="25"
+                              Margin="0, 0, 10, 0"
+                              ItemsSource="{Binding TablesList}"
+                              DisplayMemberPath="Value"
+                              SelectedItem="{Binding TableSelected}">
+                    </ComboBox>
+
+                    <Button
+                        Width="60"
+                        Height="30"
+                        Margin="0, 0, 10, 0"
+                        Command="{Binding GetTableStatusToFullCommand}"
+                        Content="Đặt"></Button>
+                    <Button
+                        Width="60"
+                        Height="30"
+                        Margin="0, 0, 10, 0"
+                        Command="{Binding GetTableStatusToEmptyCommand}"
+                        Content="Hủy đặt"></Button>
+                </StackPanel>
+
+                <ListView Grid.Row="1"
+                          ItemsSource="{Binding BillList}"
+                          Padding="0"
+                          Name="LsvBills">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Tên món" Width="150" DisplayMemberBinding="{Binding FoodName}"></GridViewColumn>
+                            <GridViewColumn Header="Số lượng"  Width="100" DisplayMemberBinding="{Binding Count}"></GridViewColumn>
+                            <GridViewColumn Header="Đơn giá" Width="120" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                            <GridViewColumn Header="Thành tiền" Width="140" DisplayMemberBinding="{Binding TotalPrice}"></GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <StackPanel Grid.Row="2" VerticalAlignment="Bottom" Orientation="Horizontal">
+                    <Button Content="Thêm món" Margin="5"
+                            Command="{Binding GetTableAddNewFoodCommand}"
+                            Width="70" Height="30"></Button>
+                    <Button Content="Thanh toán" Command="{Binding CheckoutCommand}" Margin="5"  Width="120"  Height="30"></Button>
+                </StackPanel>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</UserControl>
