@@ -14,7 +14,7 @@ namespace WPF_CafeManagement.SQL
         public const string ROUND_START = "(";
         public const string ROUND_END = ")";
 
-        public const string CONNECTION_STR = "Data Source=.\\sqlexpress;Initial Catalog=QuanLyQuanCafe;Integrated Security=True";
+        public const string CONNECTION_STR = "Data Source=.\\sqlexpress2012;Initial Catalog=QuanLyQuanCafe;Integrated Security=True";
 
         private static DataProvider _instance; // Ctrl + R + E
         
