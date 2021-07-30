@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using WPF_CafeManagement.Service;
+using WPF_CafeManagement.ViewModel;
 
 namespace WPF_CafeManagement.View
 {
@@ -20,7 +10,6 @@ namespace WPF_CafeManagement.View
     /// </summary>
     public partial class LoginWindow : Window
     {
-        
         public LoginWindow()
         {
             InitializeComponent();
@@ -29,6 +18,10 @@ namespace WPF_CafeManagement.View
 
             txtUsername.Text = "k9";
             txtPassword.Password = "1";
+
+            var context = new LoginWindowViewModel();
+            context.Maximize = false;
+            this.DataContext = context;
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -50,13 +43,13 @@ namespace WPF_CafeManagement.View
                 }
                 else
                 {
-                    lbtResult.Text = "Email or password invalid!";
+                    // lbtResult.Text = "Email or password invalid!";
+                    MessageBox.Show("Email or password invalid!");
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                
             }
         }
     }
