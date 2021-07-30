@@ -113,7 +113,7 @@ namespace WPF_CafeManagement.ViewModel
                 if (_categories != value)
                 {
                     _categories = value;
-                    OnPropertyChanged("Categories");
+                    OnPropertyChanged();
                 }
             }
         }
@@ -126,7 +126,7 @@ namespace WPF_CafeManagement.ViewModel
                 if (_categorySelected != value)
                 {
                     _categorySelected = value;
-                    OnPropertyChanged("CategorySelected");
+                    OnPropertyChanged();
                 }
             }
         }
