@@ -583,7 +583,7 @@ namespace WPF_CafeManagement.ViewModel
 
         #region Methodes
 
-        private void GoDetails(object o)
+        private void GoCategoryDetails(object o)
         {
             CategorySelectedEdit = new Category(CategorySelected.Id, CategorySelected.Name);
         }
@@ -609,7 +609,7 @@ namespace WPF_CafeManagement.ViewModel
         private void Init()
         {
             // Category
-            GoCategoryDetailsCmd = new RelayCommand(GoDetails, CanExec);
+            GoCategoryDetailsCmd = new RelayCommand(GoCategoryDetails, CanExec);
             AddCategoryCommand = new RelayCommand(AddCategory, CanExec);
             EditCategoryCommand = new RelayCommand(EditCategory, CanExec);
             //SaveCategoryCommand = new RelayCommand(SaveCategory, CanExec);
