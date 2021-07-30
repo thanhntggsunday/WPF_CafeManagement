@@ -216,11 +216,11 @@
                                         <ColumnDefinition Width="1*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
 
-                                    <Button Grid.Column="0" x:Name="btnTableSave"  
+                                    <!--<Button Grid.Column="0" x:Name="btnTableSave"  
                                             Command="{Binding SaveTableCommand}" 
                                             CommandParameter="{Binding TableSelectedEdit}"
                                             Visibility="{Binding IsVisibleBtnSaveTable}" 
-                                            Content="Lưu" Margin="10, 5, 5, 5"></Button>
+                                            Content="Lưu" Margin="10, 5, 5, 5"></Button>-->
 
                                     <Button Grid.Column="0" x:Name="btnTableAdd" 
                                             Command="{Binding AddTableCommand}" 
@@ -228,10 +228,10 @@
                                             Visibility="{Binding IsVisibleBtnAddTable}" 
                                             Content="Thêm" Margin="10, 5, 5, 5"></Button>
 
-                                    <Button Grid.Column="1" x:Name="btnTableCancel" 
+                                    <!--<Button Grid.Column="1" x:Name="btnTableCancel" 
                                             Command="{Binding CancelEditeTableCommand}" 
                                             Visibility="{Binding IsVisibleBtnCancelTable}" 
-                                            Content="Hủy" Margin="10, 5, 5, 5"></Button>
+                                            Content="Hủy" Margin="10, 5, 5, 5"></Button>-->
                                     <Button Grid.Column="1" x:Name="btnTableEdit" 
                                             Command="{Binding EditTableCommand}" 
                                             Visibility="{Binding IsVisibleBtnEditTable}" 
@@ -351,11 +351,11 @@
                                         <ColumnDefinition Width="1*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
 
-                                    <Button Grid.Column="0" x:Name="btnFoodSave"  
+                                    <!--<Button Grid.Column="0" x:Name="btnFoodSave"  
                                             Command="{Binding SaveFoodCommand}" 
                                             CommandParameter="{Binding FoodSelectedEdit}"
                                             Visibility="{Binding IsVisibleBtnSaveFood}" 
-                                            Content="Lưu" Margin="10, 5, 5, 5"></Button>
+                                            Content="Lưu" Margin="10, 5, 5, 5"></Button>-->
 
                                     <Button Grid.Column="0" x:Name="btnFoodAdd" 
                                             Command="{Binding AddFoodCommand}" 
@@ -363,10 +363,10 @@
                                             Visibility="{Binding IsVisibleBtnAddFood}" 
                                             Content="Thêm" Margin="10, 5, 5, 5"></Button>
 
-                                    <Button Grid.Column="1" x:Name="btnFoodCancel" 
+                                    <!--<Button Grid.Column="1" x:Name="btnFoodCancel" 
                                             Command="{Binding CancelEditeFoodCommand}" 
                                             Visibility="{Binding IsVisibleBtnCancelFood}" 
-                                            Content="Hủy" Margin="10, 5, 5, 5"></Button>
+                                            Content="Hủy" Margin="10, 5, 5, 5"></Button>-->
                                     <Button Grid.Column="1" x:Name="btnFoodEdit" 
                                             Command="{Binding EditFoodCommand}" 
                                             Visibility="{Binding IsVisibleBtnEditFood}" 
@@ -487,11 +487,11 @@
                                         <ColumnDefinition Width="1*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
 
-                                    <Button Grid.Column="0" x:Name="btnUserSave"  
+                                    <!--<Button Grid.Column="0" x:Name="btnUserSave"  
                                             Command="{Binding SaveFoodCommand}" 
                                             CommandParameter="{Binding FoodSelectedEdit}"
                                             Visibility="{Binding IsVisibleBtnSaveFood}" 
-                                            Content="Lưu" Margin="10, 5, 5, 5"></Button>
+                                            Content="Lưu" Margin="10, 5, 5, 5"></Button>-->
 
                                     <Button Grid.Column="0" x:Name="btnUserAdd" 
                                             Command="{Binding AddFoodCommand}" 
@@ -499,10 +499,10 @@
                                             Visibility="{Binding IsVisibleBtnAddFood}" 
                                             Content="Thêm" Margin="10, 5, 5, 5"></Button>
 
-                                    <Button Grid.Column="1" x:Name="btnUserCancel" 
+                                    <!--<Button Grid.Column="1" x:Name="btnUserCancel" 
                                             Command="{Binding CancelEditeFoodCommand}" 
                                             Visibility="{Binding IsVisibleBtnCancelFood}" 
-                                            Content="Hủy" Margin="10, 5, 5, 5"></Button>
+                                            Content="Hủy" Margin="10, 5, 5, 5"></Button>-->
                                     <Button Grid.Column="1" x:Name="btnUserEdit" 
                                             Command="{Binding EditFoodCommand}" 
                                             Visibility="{Binding IsVisibleBtnEditFood}" 
