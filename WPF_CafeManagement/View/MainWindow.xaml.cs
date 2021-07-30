@@ -36,7 +36,7 @@ namespace WPF_CafeManagement.View
         private void MenuItemAdmin_Click(object sender, RoutedEventArgs e)
         {
             AdminWindow adminWindow = new AdminWindow();
-
+            MainMdiContainer.MdiLayout = MdiLayout.TileHorizontal;
             MainMdiContainer.Children.Add(new MdiChild()
             {
                 Title = "Admin",
@@ -45,10 +45,13 @@ namespace WPF_CafeManagement.View
                 Content = adminWindow
             });
 
+            MainMdiContainer.MdiLayout = MdiLayout.Cascade;
+
         }
 
         private void MenuItemTable_Click(object sender, RoutedEventArgs e)
         {
+            MainMdiContainer.MdiLayout = MdiLayout.TileHorizontal;
             MainMdiContainer.Children.Add(new MdiChild()
             {
                 Title = "Tables",
@@ -56,6 +59,8 @@ namespace WPF_CafeManagement.View
                 Width = 300,               
                 Content = new TableWindow()
             });
+
+            MainMdiContainer.MdiLayout = MdiLayout.Cascade;
         }
 
         private void MenuItemCloseAll_Click(object sender, RoutedEventArgs e)

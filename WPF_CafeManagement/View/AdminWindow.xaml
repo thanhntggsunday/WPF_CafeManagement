@@ -88,7 +88,7 @@
 
                         <StackPanel  HorizontalAlignment="Stretch" Grid.Column="0" Margin="15,0,5,5">
                             <ListView  Name="lvCategories"   ItemsSource="{Binding Categories}"
-                                       behaviors:DoubleClickToCommand.Command="{Binding GoDetailsCmd}"
+                                       behaviors:DoubleClickToCommand.Command="{Binding GoCategoryDetailsCmd}"
                                        behaviors:DoubleClickToCommand.CommandParameter="{Binding CategorySelected}"
 
                                        SelectedItem="{Binding CategorySelected}">
@@ -124,11 +124,11 @@
                                         <ColumnDefinition Width="1*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
 
-                                    <Button Grid.Column="0" x:Name="btnCategotySave"  
+                                    <!--<Button Grid.Column="0" x:Name="btnCategotySave"  
                                             Command="{Binding SaveCategoryCommand}" 
                                             CommandParameter="{Binding CategorySelectedEdit}"
                                             Visibility="{Binding IsVisibleBtnSave}" 
-                                            Content="Lưu" Margin="10, 5, 5, 5"></Button>
+                                            Content="Lưu" Margin="10, 5, 5, 5"></Button>-->
                                     
                                     <Button Grid.Column="0" x:Name="btnCategotyAdd" 
                                             Command="{Binding AddCategoryCommand}" 
@@ -136,7 +136,7 @@
                                             Visibility="{Binding IsVisibleBtnAdd}" 
                                             Content="Thêm" Margin="10, 5, 5, 5"></Button>
 
-                                    <Button Grid.Column="1" x:Name="btnCategotyCancel" Command="{Binding CancelEditeCategoryCommand}" Visibility="{Binding IsVisibleBtnCancel}" Content="Hủy" Margin="10, 5, 5, 5"></Button>
+                                    <!--<Button Grid.Column="1" x:Name="btnCategotyCancel" Command="{Binding CancelEditeCategoryCommand}" Visibility="{Binding IsVisibleBtnCancel}" Content="Hủy" Margin="10, 5, 5, 5"></Button>-->
                                     <Button Grid.Column="1" x:Name="btnCategotyEdit" Command="{Binding EditCategoryCommand}" Visibility="{Binding IsVisibleBtnEdit}" Content="Sửa" Margin="10, 5, 5, 5"></Button>
 
                                     <Button Grid.Column="2" x:Name="btnCategotyDelete" 
@@ -179,7 +179,7 @@
                             <ListView  Name="lvTable" ItemsSource="{Binding Tables}"
                                        HorizontalAlignment="Stretch"
                                        VerticalAlignment="Stretch"
-                                       behaviors:DoubleClickToCommand.Command="{Binding GoDetailsCmd}"
+                                       behaviors:DoubleClickToCommand.Command="{Binding GoTableDetailsCmd}"
                                        behaviors:DoubleClickToCommand.CommandParameter="{Binding TableSelected}"
 
                                        SelectedItem="{Binding TableSelected}">
@@ -216,11 +216,11 @@
                                         <ColumnDefinition Width="1*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
 
-                                    <Button Grid.Column="0" x:Name="btnTableSave"  
+                                    <!--<Button Grid.Column="0" x:Name="btnTableSave"  
                                             Command="{Binding SaveTableCommand}" 
                                             CommandParameter="{Binding TableSelectedEdit}"
                                             Visibility="{Binding IsVisibleBtnSaveTable}" 
-                                            Content="Lưu" Margin="10, 5, 5, 5"></Button>
+                                            Content="Lưu" Margin="10, 5, 5, 5"></Button>-->
 
                                     <Button Grid.Column="0" x:Name="btnTableAdd" 
                                             Command="{Binding AddTableCommand}" 
@@ -228,10 +228,10 @@
                                             Visibility="{Binding IsVisibleBtnAddTable}" 
                                             Content="Thêm" Margin="10, 5, 5, 5"></Button>
 
-                                    <Button Grid.Column="1" x:Name="btnTableCancel" 
+                                    <!--<Button Grid.Column="1" x:Name="btnTableCancel" 
                                             Command="{Binding CancelEditeTableCommand}" 
                                             Visibility="{Binding IsVisibleBtnCancelTable}" 
-                                            Content="Hủy" Margin="10, 5, 5, 5"></Button>
+                                            Content="Hủy" Margin="10, 5, 5, 5"></Button>-->
                                     <Button Grid.Column="1" x:Name="btnTableEdit" 
                                             Command="{Binding EditTableCommand}" 
                                             Visibility="{Binding IsVisibleBtnEditTable}" 
@@ -275,7 +275,7 @@
 
                         <StackPanel  HorizontalAlignment="Stretch" Grid.Column="0" Margin="15,0,5,5">
                             <ListView  Name="lvFoods"   ItemsSource="{Binding Foods}"
-                                       behaviors:DoubleClickToCommand.Command="{Binding GoDetailsCmd}"
+                                       behaviors:DoubleClickToCommand.Command="{Binding GoFoodDetailsCmd}"
                                        behaviors:DoubleClickToCommand.CommandParameter="{Binding FoodSelected}"
 
                                        SelectedItem="{Binding FoodSelected}">
@@ -351,11 +351,11 @@
                                         <ColumnDefinition Width="1*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
 
-                                    <Button Grid.Column="0" x:Name="btnFoodSave"  
+                                    <!--<Button Grid.Column="0" x:Name="btnFoodSave"  
                                             Command="{Binding SaveFoodCommand}" 
                                             CommandParameter="{Binding FoodSelectedEdit}"
                                             Visibility="{Binding IsVisibleBtnSaveFood}" 
-                                            Content="Lưu" Margin="10, 5, 5, 5"></Button>
+                                            Content="Lưu" Margin="10, 5, 5, 5"></Button>-->
 
                                     <Button Grid.Column="0" x:Name="btnFoodAdd" 
                                             Command="{Binding AddFoodCommand}" 
@@ -363,10 +363,10 @@
                                             Visibility="{Binding IsVisibleBtnAddFood}" 
                                             Content="Thêm" Margin="10, 5, 5, 5"></Button>
 
-                                    <Button Grid.Column="1" x:Name="btnFoodCancel" 
+                                    <!--<Button Grid.Column="1" x:Name="btnFoodCancel" 
                                             Command="{Binding CancelEditeFoodCommand}" 
                                             Visibility="{Binding IsVisibleBtnCancelFood}" 
-                                            Content="Hủy" Margin="10, 5, 5, 5"></Button>
+                                            Content="Hủy" Margin="10, 5, 5, 5"></Button>-->
                                     <Button Grid.Column="1" x:Name="btnFoodEdit" 
                                             Command="{Binding EditFoodCommand}" 
                                             Visibility="{Binding IsVisibleBtnEditFood}" 
@@ -410,7 +410,7 @@
 
                         <StackPanel  HorizontalAlignment="Stretch" Grid.Column="0" Margin="15,0,5,5">
                             <ListView  Name="lvUsers"   ItemsSource="{Binding Users}"
-                                       behaviors:DoubleClickToCommand.Command="{Binding GoDetailsCmd}"
+                                       behaviors:DoubleClickToCommand.Command="{Binding GoUserDetailsCmd}"
                                        behaviors:DoubleClickToCommand.CommandParameter="{Binding UserSelected}"
 
                                        SelectedItem="{Binding UserSelected}">
@@ -487,11 +487,11 @@
                                         <ColumnDefinition Width="1*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
 
-                                    <Button Grid.Column="0" x:Name="btnUserSave"  
+                                    <!--<Button Grid.Column="0" x:Name="btnUserSave"  
                                             Command="{Binding SaveFoodCommand}" 
                                             CommandParameter="{Binding FoodSelectedEdit}"
                                             Visibility="{Binding IsVisibleBtnSaveFood}" 
-                                            Content="Lưu" Margin="10, 5, 5, 5"></Button>
+                                            Content="Lưu" Margin="10, 5, 5, 5"></Button>-->
 
                                     <Button Grid.Column="0" x:Name="btnUserAdd" 
                                             Command="{Binding AddFoodCommand}" 
@@ -499,10 +499,10 @@
                                             Visibility="{Binding IsVisibleBtnAddFood}" 
                                             Content="Thêm" Margin="10, 5, 5, 5"></Button>
 
-                                    <Button Grid.Column="1" x:Name="btnUserCancel" 
+                                    <!--<Button Grid.Column="1" x:Name="btnUserCancel" 
                                             Command="{Binding CancelEditeFoodCommand}" 
                                             Visibility="{Binding IsVisibleBtnCancelFood}" 
-                                            Content="Hủy" Margin="10, 5, 5, 5"></Button>
+                                            Content="Hủy" Margin="10, 5, 5, 5"></Button>-->
                                     <Button Grid.Column="1" x:Name="btnUserEdit" 
                                             Command="{Binding EditFoodCommand}" 
                                             Visibility="{Binding IsVisibleBtnEditFood}" 

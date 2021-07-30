@@ -12,7 +12,7 @@ namespace WPF_CafeManagement.ViewModel
     {
         #region Command
 
-        public ICommand GoDetailsCmd { get; private set; }
+        
         public ICommand SaveCategoryCommand { get; private set; }
         public ICommand AddCategoryCommand { get; private set; }
         public ICommand CancelEditeCategoryCommand { get; private set; }
@@ -41,6 +41,12 @@ namespace WPF_CafeManagement.ViewModel
         public ICommand EditUserCommand { get; private set; }
         public ICommand DeleteUserCommand { get; private set; }
         public ICommand SearchUserCommand { get; private set; }
+
+
+        public ICommand GoCategoryDetailsCmd { get; private set; }
+        public ICommand GoTableDetailsCmd { get; private set; }
+        public ICommand GoFoodDetailsCmd { get; private set; }
+        public ICommand GoUserDetailsCmd { get; private set; }
 
         #endregion Command
 
@@ -107,7 +113,7 @@ namespace WPF_CafeManagement.ViewModel
                 if (_categories != value)
                 {
                     _categories = value;
-                    OnPropertyChanged("Categories");
+                    OnPropertyChanged();
                 }
             }
         }
@@ -120,7 +126,7 @@ namespace WPF_CafeManagement.ViewModel
                 if (_categorySelected != value)
                 {
                     _categorySelected = value;
-                    OnPropertyChanged("CategorySelected");
+                    OnPropertyChanged();
                 }
             }
         }
@@ -577,18 +583,37 @@ namespace WPF_CafeManagement.ViewModel
 
         #region Methodes
 
-        private void GoDetails(object o)
+        private void GoCategoryDetails(object o)
         {
+            CategorySelectedEdit = new Category(CategorySelected.Id, CategorySelected.Name);
+        }
+
+        private void GoFoodDetails(object o)
+        {
+            FoodSelectedEdit = FoodSelected;
+            // FoodCategorySelected = FoodCategorySelected;
+        }
+
+        private void GoTableDetails(object o)
+        {
+            TableSelectedEdit = TableSelected;
+           
+        }
+
+        private void GoUserDetails(object o)
+        {
+            UserSelectedEdit = UserSelected;
+           
         }
 
         private void Init()
         {
             // Category
-            GoDetailsCmd = new RelayCommand(GoDetails, CanExec);
+            GoCategoryDetailsCmd = new RelayCommand(GoCategoryDetails, CanExec);
             AddCategoryCommand = new RelayCommand(AddCategory, CanExec);
             EditCategoryCommand = new RelayCommand(EditCategory, CanExec);
-            SaveCategoryCommand = new RelayCommand(SaveCategory, CanExec);
-            CancelEditeCategoryCommand = new RelayCommand(CancelEditeCategory, CanExec);
+            //SaveCategoryCommand = new RelayCommand(SaveCategory, CanExec);
+            //CancelEditeCategoryCommand = new RelayCommand(CancelEditeCategory, CanExec);
             DeleteCategoryCommand = new RelayCommand(DeleteCategory, CanExec);
             StatisticalBillCommand = new RelayCommand(StatisticalBill, CanExec);
             SearchCategoryCommand = new RelayCommand(SearchCategoryByName, CanExec);
@@ -640,6 +665,12 @@ namespace WPF_CafeManagement.ViewModel
             DeleteUserCommand = new RelayCommand(DeleteUser, CanExec);
             SearchUserCommand = new RelayCommand(SearchUserByName, CanExec);
             GetAllUsers();
+
+            GoTableDetailsCmd = new RelayCommand(GoTableDetails, CanExec);
+            GoFoodDetailsCmd = new RelayCommand(GoFoodDetails, CanExec);
+            GoUserDetailsCmd = new RelayCommand(GoUserDetails, CanExec);
+          
+            _categorySelectedEdit = new Category();
         }
 
         #region Bill
@@ -665,49 +696,46 @@ namespace WPF_CafeManagement.ViewModel
 
         #region Category
 
-        private void SaveCategory(object o)
-        {
-            try
-            {
-                IsVisibleBtnAdd = Visibility.Visible;
-                IsVisibleBtnSave = Visibility.Hidden;
-                IsVisibleBtnEdit = Visibility.Visible;
-                IsVisibleBtnCancel = Visibility.Hidden;
+        //private void SaveCategory(object o)
+        //{
+        //    try
+        //    {
+        //        IsVisibleBtnAdd = Visibility.Visible;
+        //        IsVisibleBtnSave = Visibility.Hidden;
+        //        IsVisibleBtnEdit = Visibility.Visible;
+        //        IsVisibleBtnCancel = Visibility.Hidden;
 
-                var category = o as Category;
+        //        var category = o as Category;
 
-                if (_isEdit)
-                {
-                    CategoryService.Instance.UpdateCategory(category);
-                }
-                else
-                {
-                    CategoryService.Instance.InsertCategory(category);
-                }
+        //        if (_isEdit)
+        //        {
+        //            CategoryService.Instance.UpdateCategory(category);
+        //        }
+        //        else
+        //        {
+        //            CategoryService.Instance.InsertCategory(category);
+        //        }
 
-                _isEdit = false;
-                GetAllCategories();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
+        //        _isEdit = false;
+        //        GetAllCategories();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //    }
+        //}
 
         private void EditCategory(object o)
         {
             try
-            {
-                _isEdit = true;
-                IsVisibleBtnAdd = Visibility.Hidden;
-                IsVisibleBtnSave = Visibility.Visible;
-                IsVisibleBtnEdit = Visibility.Hidden;
-                IsVisibleBtnCancel = Visibility.Visible;
+            {                
+                //if (CategorySelected != null)
+                //{
+                //    CategorySelectedEdit = new Category(CategorySelected.Id, CategorySelected.Name);
+                //}
 
-                if (CategorySelected != null)
-                {
-                    CategorySelectedEdit = new Category(CategorySelected.Id, CategorySelected.Name);
-                }
+                CategoryService.Instance.UpdateCategory(CategorySelectedEdit);
+                GetAllCategories();
             }
             catch (Exception ex)
             {
@@ -717,14 +745,11 @@ namespace WPF_CafeManagement.ViewModel
 
         private void AddCategory(object o)
         {
-            try
-            {
-                _isEdit = false;
-                IsVisibleBtnAdd = Visibility.Hidden;
-                IsVisibleBtnSave = Visibility.Visible;
-                IsVisibleBtnEdit = Visibility.Hidden;
-                IsVisibleBtnCancel = Visibility.Visible;
+            try {
+                //CategorySelectedEdit = new Category();
 
+                CategoryService.Instance.InsertCategory(CategorySelectedEdit);
+                GetAllCategories();
                 CategorySelectedEdit = new Category();
             }
             catch (Exception ex)
@@ -733,23 +758,23 @@ namespace WPF_CafeManagement.ViewModel
             }
         }
 
-        private void CancelEditeCategory(object o)
-        {
-            try
-            {
-                _isEdit = false;
-                IsVisibleBtnAdd = Visibility.Visible;
-                IsVisibleBtnSave = Visibility.Hidden;
-                IsVisibleBtnEdit = Visibility.Visible;
-                IsVisibleBtnCancel = Visibility.Hidden;
+        //private void CancelEditeCategory(object o)
+        //{
+        //    try
+        //    {
+        //        _isEdit = false;
+        //        IsVisibleBtnAdd = Visibility.Visible;
+        //        IsVisibleBtnSave = Visibility.Hidden;
+        //        IsVisibleBtnEdit = Visibility.Visible;
+        //        IsVisibleBtnCancel = Visibility.Hidden;
 
-                CategorySelectedEdit = new Category();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
-        }
+        //        CategorySelectedEdit = new Category();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex);
+        //    }
+        //}
 
         private void DeleteCategory(object o)
         {
