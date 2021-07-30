@@ -12,7 +12,7 @@ namespace WPF_CafeManagement.ViewModel
     {
         #region Command
 
-        public ICommand GoDetailsCmd { get; private set; }
+        
         public ICommand SaveCategoryCommand { get; private set; }
         public ICommand AddCategoryCommand { get; private set; }
         public ICommand CancelEditeCategoryCommand { get; private set; }
@@ -41,6 +41,12 @@ namespace WPF_CafeManagement.ViewModel
         public ICommand EditUserCommand { get; private set; }
         public ICommand DeleteUserCommand { get; private set; }
         public ICommand SearchUserCommand { get; private set; }
+
+
+        public ICommand GoCategoryDetailsCmd { get; private set; }
+        public ICommand GoTableDetailsCmd { get; private set; }
+        public ICommand GoFoodDetailsCmd { get; private set; }
+        public ICommand GoUserDetailsCmd { get; private set; }
 
         #endregion Command
 
@@ -582,10 +588,28 @@ namespace WPF_CafeManagement.ViewModel
             CategorySelectedEdit = new Category(CategorySelected.Id, CategorySelected.Name);
         }
 
+        private void GoFoodDetails(object o)
+        {
+            FoodSelectedEdit = FoodSelected;
+            // FoodCategorySelected = FoodCategorySelected;
+        }
+
+        private void GoTableDetails(object o)
+        {
+            TableSelectedEdit = TableSelected;
+           
+        }
+
+        private void GoUserDetails(object o)
+        {
+            UserSelectedEdit = UserSelected;
+           
+        }
+
         private void Init()
         {
             // Category
-            GoDetailsCmd = new RelayCommand(GoDetails, CanExec);
+            GoCategoryDetailsCmd = new RelayCommand(GoDetails, CanExec);
             AddCategoryCommand = new RelayCommand(AddCategory, CanExec);
             EditCategoryCommand = new RelayCommand(EditCategory, CanExec);
             //SaveCategoryCommand = new RelayCommand(SaveCategory, CanExec);
@@ -642,6 +666,10 @@ namespace WPF_CafeManagement.ViewModel
             SearchUserCommand = new RelayCommand(SearchUserByName, CanExec);
             GetAllUsers();
 
+            GoTableDetailsCmd = new RelayCommand(GoTableDetails, CanExec);
+            GoFoodDetailsCmd = new RelayCommand(GoFoodDetails, CanExec);
+            GoUserDetailsCmd = new RelayCommand(GoUserDetails, CanExec);
+          
             _categorySelectedEdit = new Category();
         }
 

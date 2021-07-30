@@ -179,7 +179,7 @@
                             <ListView  Name="lvTable" ItemsSource="{Binding Tables}"
                                        HorizontalAlignment="Stretch"
                                        VerticalAlignment="Stretch"
-                                       behaviors:DoubleClickToCommand.Command="{Binding GoDetailsCmd}"
+                                       behaviors:DoubleClickToCommand.Command="{Binding GoTableDetailsCmd}"
                                        behaviors:DoubleClickToCommand.CommandParameter="{Binding TableSelected}"
 
                                        SelectedItem="{Binding TableSelected}">
@@ -275,7 +275,7 @@
 
                         <StackPanel  HorizontalAlignment="Stretch" Grid.Column="0" Margin="15,0,5,5">
                             <ListView  Name="lvFoods"   ItemsSource="{Binding Foods}"
-                                       behaviors:DoubleClickToCommand.Command="{Binding GoDetailsCmd}"
+                                       behaviors:DoubleClickToCommand.Command="{Binding GoFoodDetailsCmd}"
                                        behaviors:DoubleClickToCommand.CommandParameter="{Binding FoodSelected}"
 
                                        SelectedItem="{Binding FoodSelected}">
@@ -410,7 +410,7 @@
 
                         <StackPanel  HorizontalAlignment="Stretch" Grid.Column="0" Margin="15,0,5,5">
                             <ListView  Name="lvUsers"   ItemsSource="{Binding Users}"
-                                       behaviors:DoubleClickToCommand.Command="{Binding GoDetailsCmd}"
+                                       behaviors:DoubleClickToCommand.Command="{Binding GoUserDetailsCmd}"
                                        behaviors:DoubleClickToCommand.CommandParameter="{Binding UserSelected}"
 
                                        SelectedItem="{Binding UserSelected}">
