@@ -124,11 +124,11 @@
                                         <ColumnDefinition Width="1*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
 
-                                    <Button Grid.Column="0" x:Name="btnCategotySave"  
+                                    <!--<Button Grid.Column="0" x:Name="btnCategotySave"  
                                             Command="{Binding SaveCategoryCommand}" 
                                             CommandParameter="{Binding CategorySelectedEdit}"
                                             Visibility="{Binding IsVisibleBtnSave}" 
-                                            Content="Lưu" Margin="10, 5, 5, 5"></Button>
+                                            Content="Lưu" Margin="10, 5, 5, 5"></Button>-->
                                     
                                     <Button Grid.Column="0" x:Name="btnCategotyAdd" 
                                             Command="{Binding AddCategoryCommand}" 
@@ -136,7 +136,7 @@
                                             Visibility="{Binding IsVisibleBtnAdd}" 
                                             Content="Thêm" Margin="10, 5, 5, 5"></Button>
 
-                                    <Button Grid.Column="1" x:Name="btnCategotyCancel" Command="{Binding CancelEditeCategoryCommand}" Visibility="{Binding IsVisibleBtnCancel}" Content="Hủy" Margin="10, 5, 5, 5"></Button>
+                                    <!--<Button Grid.Column="1" x:Name="btnCategotyCancel" Command="{Binding CancelEditeCategoryCommand}" Visibility="{Binding IsVisibleBtnCancel}" Content="Hủy" Margin="10, 5, 5, 5"></Button>-->
                                     <Button Grid.Column="1" x:Name="btnCategotyEdit" Command="{Binding EditCategoryCommand}" Visibility="{Binding IsVisibleBtnEdit}" Content="Sửa" Margin="10, 5, 5, 5"></Button>
 
                                     <Button Grid.Column="2" x:Name="btnCategotyDelete" 
