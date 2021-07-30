@@ -16,7 +16,7 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
-        <materialDesign:ColorZone Mode="Dark" >
+        <materialDesign:ColorZone Mode="PrimaryLight" >
             <DockPanel>
                 <StackPanel DockPanel.Dock="Right"  Background="Transparent" Orientation="Horizontal">
                     <StackPanel.Resources>
