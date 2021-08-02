@@ -6,7 +6,6 @@ namespace WPF_CafeManagement.DTO
     {
         public Account()
         {
-
         }
         public Account(string userName, string displayName, int type, string password = null)
         {
