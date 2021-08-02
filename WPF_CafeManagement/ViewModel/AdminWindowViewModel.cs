@@ -704,6 +704,7 @@ namespace WPF_CafeManagement.ViewModel
             try
             {
                 CategoryService.Instance.UpdateCategory(CategorySelectedEdit);
+                MessageBox.Show("Success", "Info", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.No);
                 GetAllCategories();
             }
             catch (Exception ex)
@@ -719,6 +720,7 @@ namespace WPF_CafeManagement.ViewModel
                 //CategorySelectedEdit = new Category();
 
                 CategoryService.Instance.InsertCategory(CategorySelectedEdit);
+                MessageBox.Show("Success", "Info", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.No);
                 GetAllCategories();
                 CategorySelectedEdit = new Category();
             }
@@ -739,7 +741,7 @@ namespace WPF_CafeManagement.ViewModel
                 if (result == MessageBoxResult.Yes)
                 {
                     CategoryService.Instance.DeleteCategory(CategorySelectedEdit.Id);
-
+                    MessageBox.Show("Success", "Info", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.No);
                     CategorySelectedEdit = new Category();
                     GetAllCategories();
                 }
@@ -787,6 +789,7 @@ namespace WPF_CafeManagement.ViewModel
                     TableSelectedEdit = new Table(TableSelected.Id, TableSelected.Name, TableSelected.Status);
                 }
                 TableService.Instance.UpdateTable(TableSelectedEdit);
+                MessageBox.Show("Success", "Info", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.No);
                 GetAllTables();
             }
             catch (Exception ex)
@@ -801,6 +804,7 @@ namespace WPF_CafeManagement.ViewModel
             {
                 TableSelectedEdit.Status = Constants.TABLE_EMPTY_STATUS;
                 TableService.Instance.InsertTable(TableSelectedEdit);
+                MessageBox.Show("Success", "Info", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.No);
                 GetAllTables();
                 TableSelectedEdit = new Table();
             }
@@ -821,6 +825,7 @@ namespace WPF_CafeManagement.ViewModel
                 if (result == MessageBoxResult.Yes)
                 {
                     TableService.Instance.DeleteTable(TableSelectedEdit.Id);
+                    MessageBox.Show("Success", "Info", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.No);
                     TableSelectedEdit = new Table();
                     GetAllTables();
                 }
@@ -907,9 +912,10 @@ namespace WPF_CafeManagement.ViewModel
                 if (result == MessageBoxResult.Yes)
                 {
                     FoodService.Instance.DeleteFood(FoodSelectedEdit.Id);
+                    MessageBox.Show("Success", "Info", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.No);
                     GetAllFoods();
                     FoodSelectedEdit = new Food();
-                    GetAllFoods();
+                   
                 }
             }
             catch (Exception ex)
@@ -968,6 +974,7 @@ namespace WPF_CafeManagement.ViewModel
                 }
 
                 _isEditFood = false;
+                MessageBox.Show("Success", "Info", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.No);
             }
             catch (Exception ex)
             {
@@ -1049,7 +1056,7 @@ namespace WPF_CafeManagement.ViewModel
                 if (result == MessageBoxResult.Yes)
                 {
                     AccountService.Instance.DeleteAccount(UserSelectedEdit.UserName);
-
+                    MessageBox.Show("Success", "Info", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.No);
                     UserSelectedEdit = new Account();
                     GetAllUsers();
                 }
