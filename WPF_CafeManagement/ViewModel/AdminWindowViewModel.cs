@@ -637,8 +637,8 @@ namespace WPF_CafeManagement.ViewModel
 
             AddTableCommand = new RelayCommand(AddTable, CanExec);
             EditTableCommand = new RelayCommand(EditTable, CanExec);
-            SaveTableCommand = new RelayCommand(SaveTable, CanExec);
-            CancelEditeTableCommand = new RelayCommand(CancelEditeTable, CanExec);
+            //SaveTableCommand = new RelayCommand(SaveTable, CanExec);
+            //CancelEditeTableCommand = new RelayCommand(CancelEditeTable, CanExec);
             DeleteTableCommand = new RelayCommand(DeleteTable, CanExec);
             SearchTableCommand = new RelayCommand(SearchTableByName, CanExec);
             GetAllTables();
@@ -651,8 +651,8 @@ namespace WPF_CafeManagement.ViewModel
 
             AddFoodCommand = new RelayCommand(AddFood, CanExec);
             EditFoodCommand = new RelayCommand(EditFood, CanExec);
-            SaveFoodCommand = new RelayCommand(SaveFood, CanExec);
-            CancelEditeFoodCommand = new RelayCommand(CancelEditFood, CanExec);
+            //SaveFoodCommand = new RelayCommand(SaveFood, CanExec);
+            //CancelEditeFoodCommand = new RelayCommand(CancelEditFood, CanExec);
             DeleteFoodCommand = new RelayCommand(DeleteFood, CanExec);
             SearchFoodCommand = new RelayCommand(SearchFoodByName, CanExec);
             GetAllFoods();
@@ -789,10 +789,10 @@ namespace WPF_CafeManagement.ViewModel
 
                 var result = MessageBox.Show("You are sure delete item?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
                 _isEdit = false;
-                IsVisibleBtnAdd = Visibility.Visible;
-                IsVisibleBtnSave = Visibility.Hidden;
-                IsVisibleBtnEdit = Visibility.Visible;
-                IsVisibleBtnCancel = Visibility.Hidden;
+                //IsVisibleBtnAdd = Visibility.Visible;
+                //IsVisibleBtnSave = Visibility.Hidden;
+                //IsVisibleBtnEdit = Visibility.Visible;
+                //IsVisibleBtnCancel = Visibility.Hidden;
 
                 if (result == MessageBoxResult.Yes)
                 {
@@ -836,50 +836,52 @@ namespace WPF_CafeManagement.ViewModel
 
         #region Table
 
-        private void SaveTable(object o)
-        {
-            try
-            {
-                IsVisibleBtnAddTable = Visibility.Visible;
-                IsVisibleBtnSaveTable = Visibility.Hidden;
-                IsVisibleBtnEditTable = Visibility.Visible;
-                IsVisibleBtnCancelTable = Visibility.Hidden;
+        //private void SaveTable(object o)
+        //{
+        //    try
+        //    {
+        //        IsVisibleBtnAddTable = Visibility.Visible;
+        //        IsVisibleBtnSaveTable = Visibility.Hidden;
+        //        IsVisibleBtnEditTable = Visibility.Visible;
+        //        IsVisibleBtnCancelTable = Visibility.Hidden;
 
-                var table = o as Table;
+        //        var table = o as Table;
 
-                if (_isEditTable)
-                {
-                    TableService.Instance.UpdateTable(table);
-                }
-                else
-                {
-                    table.Status = Constants.TABLE_EMPTY_STATUS;
-                    TableService.Instance.InsertTable(table);
-                }
+        //        if (_isEditTable)
+        //        {
+        //            TableService.Instance.UpdateTable(table);
+        //        }
+        //        else
+        //        {
+        //            table.Status = Constants.TABLE_EMPTY_STATUS;
+        //            TableService.Instance.InsertTable(table);
+        //        }
 
-                _isEditTable = false;
-                GetAllTables();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
+        //        _isEditTable = false;
+        //        GetAllTables();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //    }
+        //}
 
         private void EditTable(object o)
         {
             try
             {
-                _isEditTable = true;
-                IsVisibleBtnAddTable = Visibility.Hidden;
-                IsVisibleBtnSaveTable = Visibility.Visible;
-                IsVisibleBtnEditTable = Visibility.Hidden;
-                IsVisibleBtnCancelTable = Visibility.Visible;
+                //_isEditTable = true;
+                //IsVisibleBtnAddTable = Visibility.Hidden;
+                //IsVisibleBtnSaveTable = Visibility.Visible;
+                //IsVisibleBtnEditTable = Visibility.Hidden;
+                //IsVisibleBtnCancelTable = Visibility.Visible;
 
                 if (TableSelected != null)
                 {
                     TableSelectedEdit = new Table(TableSelected.Id, TableSelected.Name, TableSelected.Status);
                 }
+                TableService.Instance.UpdateTable(TableSelectedEdit);
+                GetAllTables();
             }
             catch (Exception ex)
             {
@@ -892,11 +894,16 @@ namespace WPF_CafeManagement.ViewModel
             try
             {
                 _isEdit = false;
-                IsVisibleBtnAddTable = Visibility.Hidden;
-                IsVisibleBtnSaveTable = Visibility.Visible;
-                IsVisibleBtnEditTable = Visibility.Hidden;
-                IsVisibleBtnCancelTable = Visibility.Visible;
+                //IsVisibleBtnAddTable = Visibility.Hidden;
+                //IsVisibleBtnSaveTable = Visibility.Visible;
+                //IsVisibleBtnEditTable = Visibility.Hidden;
+                //IsVisibleBtnCancelTable = Visibility.Visible;
 
+                //TableSelectedEdit = new Table();
+
+                TableSelectedEdit.Status = Constants.TABLE_EMPTY_STATUS;
+                TableService.Instance.InsertTable(TableSelectedEdit);
+                GetAllTables();
                 TableSelectedEdit = new Table();
             }
             catch (Exception ex)
@@ -905,23 +912,23 @@ namespace WPF_CafeManagement.ViewModel
             }
         }
 
-        private void CancelEditeTable(object o)
-        {
-            try
-            {
-                _isEdit = false;
-                IsVisibleBtnAddTable = Visibility.Visible;
-                IsVisibleBtnSaveTable = Visibility.Hidden;
-                IsVisibleBtnEditTable = Visibility.Visible;
-                IsVisibleBtnCancelTable = Visibility.Hidden;
+        //private void CancelEditeTable(object o)
+        //{
+        //    try
+        //    {
+        //        _isEdit = false;
+        //        IsVisibleBtnAddTable = Visibility.Visible;
+        //        IsVisibleBtnSaveTable = Visibility.Hidden;
+        //        IsVisibleBtnEditTable = Visibility.Visible;
+        //        IsVisibleBtnCancelTable = Visibility.Hidden;
 
-                TableSelectedEdit = new Table();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
-        }
+        //        TableSelectedEdit = new Table();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex);
+        //    }
+        //}
 
         private void DeleteTable(object o)
         {
@@ -930,11 +937,11 @@ namespace WPF_CafeManagement.ViewModel
                 TableSelectedEdit = new Table(TableSelected.Id, TableSelected.Name, TableSelected.Status);
 
                 var result = MessageBox.Show("You are sure delete item?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
-                _isEdit = false;
-                IsVisibleBtnAdd = Visibility.Visible;
-                IsVisibleBtnSave = Visibility.Hidden;
-                IsVisibleBtnEdit = Visibility.Visible;
-                IsVisibleBtnCancel = Visibility.Hidden;
+                //_isEdit = false;
+                //IsVisibleBtnAdd = Visibility.Visible;
+                //IsVisibleBtnSave = Visibility.Hidden;
+                //IsVisibleBtnEdit = Visibility.Visible;
+                //IsVisibleBtnCancel = Visibility.Hidden;
 
                 if (result == MessageBoxResult.Yes)
                 {
@@ -977,48 +984,54 @@ namespace WPF_CafeManagement.ViewModel
 
         #region Food
 
-        private void SaveFood(object o)
-        {
-            try
-            {
-                IsVisibleBtnAddFood = Visibility.Visible;
-                IsVisibleBtnSaveFood = Visibility.Hidden;
-                IsVisibleBtnEditFood = Visibility.Visible;
-                IsVisibleBtnCancelFood = Visibility.Hidden;
+        //private void SaveFood(object o)
+        //{
+        //    try
+        //    {
+        //        IsVisibleBtnAddFood = Visibility.Visible;
+        //        IsVisibleBtnSaveFood = Visibility.Hidden;
+        //        IsVisibleBtnEditFood = Visibility.Visible;
+        //        IsVisibleBtnCancelFood = Visibility.Hidden;
 
-                var food = o as Food;
+        //        var food = o as Food;
 
-                if (_isEditFood)
-                {
-                    FoodService.Instance.UpdateFood(food.Id, food.Name, food.CategoryId, food.Price);
-                }
-                else
-                {
-                    FoodService.Instance.InsertFood(food.Name, FoodCategorySelected.Id, food.Price);
-                }
+        //        if (_isEditFood)
+        //        {
+        //            FoodService.Instance.UpdateFood(food.Id, food.Name, food.CategoryId, food.Price);
+        //        }
+        //        else
+        //        {
+        //            FoodService.Instance.InsertFood(food.Name, FoodCategorySelected.Id, food.Price);
+        //        }
 
-                _isEditFood = false;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
+        //        _isEditFood = false;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //    }
+        //}
 
         private void EditFood(object o)
         {
             try
             {
-                _isEditFood = true;
-                IsVisibleBtnAddFood = Visibility.Hidden;
-                IsVisibleBtnSaveFood = Visibility.Visible;
-                IsVisibleBtnEditFood = Visibility.Hidden;
-                IsVisibleBtnCancelFood = Visibility.Visible;
+                //_isEditFood = true;
+                //IsVisibleBtnAddFood = Visibility.Hidden;
+                //IsVisibleBtnSaveFood = Visibility.Visible;
+                //IsVisibleBtnEditFood = Visibility.Hidden;
+                //IsVisibleBtnCancelFood = Visibility.Visible;
 
                 if (FoodSelected != null)
                 {
                     FoodSelectedEdit = new Food(FoodSelected.Id, FoodSelected.Name, FoodSelected.CategoryId, FoodSelected.Price);
                 }
+               
+                FoodService.Instance.UpdateFood(FoodSelectedEdit.Id, FoodSelectedEdit.Name, FoodSelectedEdit.CategoryId, FoodSelectedEdit.Price);
+
+                MessageBox.Show("Success", "Info", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.No);
+                GetAllFoods();
+
             }
             catch (Exception ex)
             {
@@ -1030,13 +1043,19 @@ namespace WPF_CafeManagement.ViewModel
         {
             try
             {
-                _isEdit = false;
-                IsVisibleBtnAddFood = Visibility.Hidden;
-                IsVisibleBtnSaveFood = Visibility.Visible;
-                IsVisibleBtnEditFood = Visibility.Hidden;
-                IsVisibleBtnCancelFood = Visibility.Visible;
+                //_isEdit = false;
+                //IsVisibleBtnAddFood = Visibility.Hidden;
+                //IsVisibleBtnSaveFood = Visibility.Visible;
+                //IsVisibleBtnEditFood = Visibility.Hidden;
+                //IsVisibleBtnCancelFood = Visibility.Visible;
 
+                FoodService.Instance.InsertFood(FoodSelectedEdit.Name, FoodCategorySelected.Id, FoodSelectedEdit.Price);
                 FoodSelectedEdit = new Food();
+
+                MessageBox.Show("Success", "Info", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.No);
+
+                GetAllFoods();
+
             }
             catch (Exception ex)
             {
@@ -1044,23 +1063,23 @@ namespace WPF_CafeManagement.ViewModel
             }
         }
 
-        private void CancelEditFood(object o)
-        {
-            try
-            {
-                _isEdit = false;
-                IsVisibleBtnAddTable = Visibility.Visible;
-                IsVisibleBtnSaveTable = Visibility.Hidden;
-                IsVisibleBtnEditTable = Visibility.Visible;
-                IsVisibleBtnCancelTable = Visibility.Hidden;
+        //private void CancelEditFood(object o)
+        //{
+        //    try
+        //    {
+        //        _isEdit = false;
+        //        IsVisibleBtnAddTable = Visibility.Visible;
+        //        IsVisibleBtnSaveTable = Visibility.Hidden;
+        //        IsVisibleBtnEditTable = Visibility.Visible;
+        //        IsVisibleBtnCancelTable = Visibility.Hidden;
 
-                TableSelectedEdit = new Table();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
-        }
+        //        TableSelectedEdit = new Table();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex);
+        //    }
+        //}
 
         private void DeleteFood(object o)
         {
@@ -1070,16 +1089,16 @@ namespace WPF_CafeManagement.ViewModel
 
                 var result = MessageBox.Show("You are sure delete item?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
 
-                _isEditFood = false;
-                IsVisibleBtnAddFood = Visibility.Visible;
-                IsVisibleBtnSaveFood = Visibility.Hidden;
-                IsVisibleBtnEditFood = Visibility.Visible;
-                IsVisibleBtnCancelFood = Visibility.Hidden;
+                //_isEditFood = false;
+                //IsVisibleBtnAddFood = Visibility.Visible;
+                //IsVisibleBtnSaveFood = Visibility.Hidden;
+                //IsVisibleBtnEditFood = Visibility.Visible;
+                //IsVisibleBtnCancelFood = Visibility.Hidden;
 
                 if (result == MessageBoxResult.Yes)
                 {
                     FoodService.Instance.DeleteFood(FoodSelectedEdit.Id);
-
+                    GetAllFoods();
                     FoodSelectedEdit = new Food();
                     GetAllFoods();
                 }
