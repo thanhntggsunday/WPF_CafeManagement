@@ -447,7 +447,7 @@
                                            HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
                                     <TextBox x:Name="txtUserName"
                                          Grid.Row="0" Grid.Column="1"
-                                         IsEnabled="False"
+                                         IsEnabled="True"
                                          Text="{Binding Path=UserSelectedEdit.UserName, Mode=TwoWay}"
                                          VerticalAlignment="Center" Margin="15,0,0,0"
                                          HorizontalAlignment="Left"

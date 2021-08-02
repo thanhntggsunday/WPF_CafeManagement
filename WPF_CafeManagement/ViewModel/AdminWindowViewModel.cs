@@ -382,6 +382,7 @@ namespace WPF_CafeManagement.ViewModel
                 {
                     _foodSelected = value;
                     OnPropertyChanged("FoodSelected");
+                    // GetFoodCategorySelectedByFoodSelected();
                 }
             }
         }
@@ -473,6 +474,12 @@ namespace WPF_CafeManagement.ViewModel
                 {
                     _foodCategorySelected = value;
                     OnPropertyChanged("FoodCategorySelected");
+
+                    if (FoodCategorySelected != null)
+                    {
+                        FoodSelectedEdit.CategoryId = FoodCategorySelected.Id;
+                    }
+                    
                 }
             }
         }
@@ -600,6 +607,7 @@ namespace WPF_CafeManagement.ViewModel
         {
             FoodSelectedEdit = FoodSelected;
             // FoodCategorySelected = FoodCategorySelected;
+            GetFoodCategorySelectedByFoodSelected();
         }
 
         private void GoTableDetails(object o)
@@ -947,6 +955,30 @@ namespace WPF_CafeManagement.ViewModel
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        private void GetFoodCategorySelectedByFoodSelected()
+        {
+            try
+            {
+                if (FoodSelected != null)
+                {
+                    for (int i = 0; i < Categories.Count; i++)
+                    {
+                        if (Categories[i].Id == FoodSelected.CategoryId)
+                        {
+                            FoodCategorySelected = Categories[i];
+                            return;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+
         }
 
         #endregion Food
