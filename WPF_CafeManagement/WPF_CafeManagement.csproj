@@ -85,6 +85,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Common\AppStaticDataManagement.cs" />
     <Compile Include="Common\Behaviors\DoubleClickToCommand.cs" />
     <Compile Include="Common\Behaviors\OneClickToCommand.cs" />
     <Compile Include="Common\CboKeyValue.cs" />

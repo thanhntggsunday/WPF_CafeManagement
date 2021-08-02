@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 using WPF.MDI;
+using WPF_CafeManagement.Common;
 
 namespace WPF_CafeManagement.View
 {
@@ -24,41 +13,107 @@ namespace WPF_CafeManagement.View
         {
             InitializeComponent();
 
-            MainMdiContainer.Children.Add(new MdiChild()
+            if (AppStaticDataManagement.TableWindowsList.Count == 0)
             {
-                Title = "Tables",
-                Height = 300,
-                Width = 300,               
-                Content = new TableWindow()
-            });
+                var varWindows = new MdiChild()
+                {
+                    Title = "Tables",
+                    Height = 300,
+                    Width = 300,
+                    Content = new TableWindow()
+                };
+
+                MainMdiContainer.Children.Add(varWindows);
+                AppStaticDataManagement.TableWindowsList.Add(varWindows);
+            }
+            else
+            {
+                var varWindows = AppStaticDataManagement.TableWindowsList[0];
+
+                foreach (var item in MainMdiContainer.Children)
+                {
+                    var mdi = item.Content as TableWindow;
+                    if (mdi != null)
+                    {
+                        MainMdiContainer.Children.Remove(item);
+                        break;
+                    }
+                }
+
+                MainMdiContainer.Children.Add(varWindows);
+            }
         }
 
         private void MenuItemAdmin_Click(object sender, RoutedEventArgs e)
         {
-            AdminWindow adminWindow = new AdminWindow();
             MainMdiContainer.MdiLayout = MdiLayout.TileHorizontal;
-            MainMdiContainer.Children.Add(new MdiChild()
+
+            if (AppStaticDataManagement.AdminWindowsList.Count == 0)
             {
-                Title = "Admin",
-                Height = 300,
-                Width = 300,
-                Content = adminWindow
-            });
+                var varWindows = new MdiChild()
+                {
+                    Title = "Tables",
+                    Height = 300,
+                    Width = 300,
+                    Content = new AdminWindow()
+                };
+
+                MainMdiContainer.Children.Add(varWindows);
+                AppStaticDataManagement.AdminWindowsList.Add(varWindows);
+            }
+            else
+            {
+                var varWindows = AppStaticDataManagement.AdminWindowsList[0];
+
+                foreach (var item in MainMdiContainer.Children)
+                {
+                    var mdi = item.Content as AdminWindow;
+                    if (mdi != null)
+                    {
+                        MainMdiContainer.Children.Remove(item);
+                        break;
+                    }
+                }
+
+                MainMdiContainer.Children.Add(varWindows);
+            }
 
             MainMdiContainer.MdiLayout = MdiLayout.Cascade;
-
         }
 
         private void MenuItemTable_Click(object sender, RoutedEventArgs e)
         {
             MainMdiContainer.MdiLayout = MdiLayout.TileHorizontal;
-            MainMdiContainer.Children.Add(new MdiChild()
+
+            if (AppStaticDataManagement.TableWindowsList.Count == 0)
             {
-                Title = "Tables",
-                Height = 300,
-                Width = 300,               
-                Content = new TableWindow()
-            });
+                var varWindows = new MdiChild()
+                {
+                    Title = "Tables",
+                    Height = 300,
+                    Width = 300,
+                    Content = new TableWindow()
+                };
+
+                MainMdiContainer.Children.Add(varWindows);
+                AppStaticDataManagement.TableWindowsList.Add(varWindows);
+            }
+            else
+            {
+                var varWindows = AppStaticDataManagement.TableWindowsList[0];
+
+                foreach (var item in MainMdiContainer.Children)
+                {
+                    var mdi = item.Content as TableWindow;
+                    if (mdi != null)
+                    {
+                        MainMdiContainer.Children.Remove(item);
+                        break;
+                    }
+                }
+
+                MainMdiContainer.Children.Add(varWindows);
+            }
 
             MainMdiContainer.MdiLayout = MdiLayout.Cascade;
         }
