@@ -12,7 +12,6 @@ namespace WPF_CafeManagement.ViewModel
     {
         #region Command
 
-        
         public ICommand SaveCategoryCommand { get; private set; }
         public ICommand AddCategoryCommand { get; private set; }
         public ICommand CancelEditeCategoryCommand { get; private set; }
@@ -41,7 +40,6 @@ namespace WPF_CafeManagement.ViewModel
         public ICommand EditUserCommand { get; private set; }
         public ICommand DeleteUserCommand { get; private set; }
         public ICommand SearchUserCommand { get; private set; }
-
 
         public ICommand GoCategoryDetailsCmd { get; private set; }
         public ICommand GoTableDetailsCmd { get; private set; }
@@ -132,7 +130,6 @@ namespace WPF_CafeManagement.ViewModel
                 {
                     CategorySelectedEdit = new Category(CategorySelected.Id, CategorySelected.Name);
                 }
-               
             }
         }
 
@@ -483,6 +480,7 @@ namespace WPF_CafeManagement.ViewModel
         #endregion Food
 
         #region Users
+
         public List<Account> Users
         {
             get => _users;
@@ -534,6 +532,7 @@ namespace WPF_CafeManagement.ViewModel
                 }
             }
         }
+
         public Visibility IsVisibleBtnAddUser
         {
             get => _isVisibleBtnAddUser;
@@ -546,6 +545,7 @@ namespace WPF_CafeManagement.ViewModel
                 }
             }
         }
+
         public Visibility IsVisibleBtnEditUser
         {
             get => _isVisibleBtnEditUser;
@@ -558,6 +558,7 @@ namespace WPF_CafeManagement.ViewModel
                 }
             }
         }
+
         public Visibility IsVisibleBtnCancelUser
         {
             get => _isVisibleBtnCancelUser;
@@ -570,6 +571,7 @@ namespace WPF_CafeManagement.ViewModel
                 }
             }
         }
+
         public string TxtUserName
         {
             get => _txtUserName;
@@ -582,7 +584,8 @@ namespace WPF_CafeManagement.ViewModel
                 }
             }
         }
-        #endregion
+
+        #endregion Users
 
         #endregion Properities
 
@@ -602,13 +605,11 @@ namespace WPF_CafeManagement.ViewModel
         private void GoTableDetails(object o)
         {
             TableSelectedEdit = TableSelected;
-           
         }
 
         private void GoUserDetails(object o)
         {
             UserSelectedEdit = UserSelected;
-           
         }
 
         private void Init()
@@ -617,8 +618,7 @@ namespace WPF_CafeManagement.ViewModel
             GoCategoryDetailsCmd = new RelayCommand(GoCategoryDetails, CanExec);
             AddCategoryCommand = new RelayCommand(AddCategory, CanExec);
             EditCategoryCommand = new RelayCommand(EditCategory, CanExec);
-            //SaveCategoryCommand = new RelayCommand(SaveCategory, CanExec);
-            //CancelEditeCategoryCommand = new RelayCommand(CancelEditeCategory, CanExec);
+
             DeleteCategoryCommand = new RelayCommand(DeleteCategory, CanExec);
             StatisticalBillCommand = new RelayCommand(StatisticalBill, CanExec);
             SearchCategoryCommand = new RelayCommand(SearchCategoryByName, CanExec);
@@ -637,8 +637,7 @@ namespace WPF_CafeManagement.ViewModel
 
             AddTableCommand = new RelayCommand(AddTable, CanExec);
             EditTableCommand = new RelayCommand(EditTable, CanExec);
-            //SaveTableCommand = new RelayCommand(SaveTable, CanExec);
-            //CancelEditeTableCommand = new RelayCommand(CancelEditeTable, CanExec);
+
             DeleteTableCommand = new RelayCommand(DeleteTable, CanExec);
             SearchTableCommand = new RelayCommand(SearchTableByName, CanExec);
             GetAllTables();
@@ -651,8 +650,7 @@ namespace WPF_CafeManagement.ViewModel
 
             AddFoodCommand = new RelayCommand(AddFood, CanExec);
             EditFoodCommand = new RelayCommand(EditFood, CanExec);
-            //SaveFoodCommand = new RelayCommand(SaveFood, CanExec);
-            //CancelEditeFoodCommand = new RelayCommand(CancelEditFood, CanExec);
+
             DeleteFoodCommand = new RelayCommand(DeleteFood, CanExec);
             SearchFoodCommand = new RelayCommand(SearchFoodByName, CanExec);
             GetAllFoods();
@@ -674,7 +672,7 @@ namespace WPF_CafeManagement.ViewModel
             GoTableDetailsCmd = new RelayCommand(GoTableDetails, CanExec);
             GoFoodDetailsCmd = new RelayCommand(GoFoodDetails, CanExec);
             GoUserDetailsCmd = new RelayCommand(GoUserDetails, CanExec);
-          
+
             _categorySelectedEdit = new Category();
         }
 
@@ -701,44 +699,10 @@ namespace WPF_CafeManagement.ViewModel
 
         #region Category
 
-        //private void SaveCategory(object o)
-        //{
-        //    try
-        //    {
-        //        IsVisibleBtnAdd = Visibility.Visible;
-        //        IsVisibleBtnSave = Visibility.Hidden;
-        //        IsVisibleBtnEdit = Visibility.Visible;
-        //        IsVisibleBtnCancel = Visibility.Hidden;
-
-        //        var category = o as Category;
-
-        //        if (_isEdit)
-        //        {
-        //            CategoryService.Instance.UpdateCategory(category);
-        //        }
-        //        else
-        //        {
-        //            CategoryService.Instance.InsertCategory(category);
-        //        }
-
-        //        _isEdit = false;
-        //        GetAllCategories();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //    }
-        //}
-
         private void EditCategory(object o)
         {
             try
-            {                
-                //if (CategorySelected != null)
-                //{
-                //    CategorySelectedEdit = new Category(CategorySelected.Id, CategorySelected.Name);
-                //}
-
+            {
                 CategoryService.Instance.UpdateCategory(CategorySelectedEdit);
                 GetAllCategories();
             }
@@ -750,7 +714,8 @@ namespace WPF_CafeManagement.ViewModel
 
         private void AddCategory(object o)
         {
-            try {
+            try
+            {
                 //CategorySelectedEdit = new Category();
 
                 CategoryService.Instance.InsertCategory(CategorySelectedEdit);
@@ -763,24 +728,6 @@ namespace WPF_CafeManagement.ViewModel
             }
         }
 
-        //private void CancelEditeCategory(object o)
-        //{
-        //    try
-        //    {
-        //        _isEdit = false;
-        //        IsVisibleBtnAdd = Visibility.Visible;
-        //        IsVisibleBtnSave = Visibility.Hidden;
-        //        IsVisibleBtnEdit = Visibility.Visible;
-        //        IsVisibleBtnCancel = Visibility.Hidden;
-
-        //        CategorySelectedEdit = new Category();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex);
-        //    }
-        //}
-
         private void DeleteCategory(object o)
         {
             try
@@ -788,11 +735,6 @@ namespace WPF_CafeManagement.ViewModel
                 CategorySelectedEdit = new Category(CategorySelected.Id, CategorySelected.Name);
 
                 var result = MessageBox.Show("You are sure delete item?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
-                _isEdit = false;
-                //IsVisibleBtnAdd = Visibility.Visible;
-                //IsVisibleBtnSave = Visibility.Hidden;
-                //IsVisibleBtnEdit = Visibility.Visible;
-                //IsVisibleBtnCancel = Visibility.Hidden;
 
                 if (result == MessageBoxResult.Yes)
                 {
@@ -836,46 +778,10 @@ namespace WPF_CafeManagement.ViewModel
 
         #region Table
 
-        //private void SaveTable(object o)
-        //{
-        //    try
-        //    {
-        //        IsVisibleBtnAddTable = Visibility.Visible;
-        //        IsVisibleBtnSaveTable = Visibility.Hidden;
-        //        IsVisibleBtnEditTable = Visibility.Visible;
-        //        IsVisibleBtnCancelTable = Visibility.Hidden;
-
-        //        var table = o as Table;
-
-        //        if (_isEditTable)
-        //        {
-        //            TableService.Instance.UpdateTable(table);
-        //        }
-        //        else
-        //        {
-        //            table.Status = Constants.TABLE_EMPTY_STATUS;
-        //            TableService.Instance.InsertTable(table);
-        //        }
-
-        //        _isEditTable = false;
-        //        GetAllTables();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //    }
-        //}
-
         private void EditTable(object o)
         {
             try
             {
-                //_isEditTable = true;
-                //IsVisibleBtnAddTable = Visibility.Hidden;
-                //IsVisibleBtnSaveTable = Visibility.Visible;
-                //IsVisibleBtnEditTable = Visibility.Hidden;
-                //IsVisibleBtnCancelTable = Visibility.Visible;
-
                 if (TableSelected != null)
                 {
                     TableSelectedEdit = new Table(TableSelected.Id, TableSelected.Name, TableSelected.Status);
@@ -893,14 +799,6 @@ namespace WPF_CafeManagement.ViewModel
         {
             try
             {
-                _isEdit = false;
-                //IsVisibleBtnAddTable = Visibility.Hidden;
-                //IsVisibleBtnSaveTable = Visibility.Visible;
-                //IsVisibleBtnEditTable = Visibility.Hidden;
-                //IsVisibleBtnCancelTable = Visibility.Visible;
-
-                //TableSelectedEdit = new Table();
-
                 TableSelectedEdit.Status = Constants.TABLE_EMPTY_STATUS;
                 TableService.Instance.InsertTable(TableSelectedEdit);
                 GetAllTables();
@@ -912,24 +810,6 @@ namespace WPF_CafeManagement.ViewModel
             }
         }
 
-        //private void CancelEditeTable(object o)
-        //{
-        //    try
-        //    {
-        //        _isEdit = false;
-        //        IsVisibleBtnAddTable = Visibility.Visible;
-        //        IsVisibleBtnSaveTable = Visibility.Hidden;
-        //        IsVisibleBtnEditTable = Visibility.Visible;
-        //        IsVisibleBtnCancelTable = Visibility.Hidden;
-
-        //        TableSelectedEdit = new Table();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex);
-        //    }
-        //}
-
         private void DeleteTable(object o)
         {
             try
@@ -937,11 +817,6 @@ namespace WPF_CafeManagement.ViewModel
                 TableSelectedEdit = new Table(TableSelected.Id, TableSelected.Name, TableSelected.Status);
 
                 var result = MessageBox.Show("You are sure delete item?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
-                //_isEdit = false;
-                //IsVisibleBtnAdd = Visibility.Visible;
-                //IsVisibleBtnSave = Visibility.Hidden;
-                //IsVisibleBtnEdit = Visibility.Visible;
-                //IsVisibleBtnCancel = Visibility.Hidden;
 
                 if (result == MessageBoxResult.Yes)
                 {
@@ -984,54 +859,19 @@ namespace WPF_CafeManagement.ViewModel
 
         #region Food
 
-        //private void SaveFood(object o)
-        //{
-        //    try
-        //    {
-        //        IsVisibleBtnAddFood = Visibility.Visible;
-        //        IsVisibleBtnSaveFood = Visibility.Hidden;
-        //        IsVisibleBtnEditFood = Visibility.Visible;
-        //        IsVisibleBtnCancelFood = Visibility.Hidden;
-
-        //        var food = o as Food;
-
-        //        if (_isEditFood)
-        //        {
-        //            FoodService.Instance.UpdateFood(food.Id, food.Name, food.CategoryId, food.Price);
-        //        }
-        //        else
-        //        {
-        //            FoodService.Instance.InsertFood(food.Name, FoodCategorySelected.Id, food.Price);
-        //        }
-
-        //        _isEditFood = false;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //    }
-        //}
-
         private void EditFood(object o)
         {
             try
             {
-                //_isEditFood = true;
-                //IsVisibleBtnAddFood = Visibility.Hidden;
-                //IsVisibleBtnSaveFood = Visibility.Visible;
-                //IsVisibleBtnEditFood = Visibility.Hidden;
-                //IsVisibleBtnCancelFood = Visibility.Visible;
-
                 if (FoodSelected != null)
                 {
                     FoodSelectedEdit = new Food(FoodSelected.Id, FoodSelected.Name, FoodSelected.CategoryId, FoodSelected.Price);
                 }
-               
+
                 FoodService.Instance.UpdateFood(FoodSelectedEdit.Id, FoodSelectedEdit.Name, FoodSelectedEdit.CategoryId, FoodSelectedEdit.Price);
 
                 MessageBox.Show("Success", "Info", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.No);
                 GetAllFoods();
-
             }
             catch (Exception ex)
             {
@@ -1043,43 +883,18 @@ namespace WPF_CafeManagement.ViewModel
         {
             try
             {
-                //_isEdit = false;
-                //IsVisibleBtnAddFood = Visibility.Hidden;
-                //IsVisibleBtnSaveFood = Visibility.Visible;
-                //IsVisibleBtnEditFood = Visibility.Hidden;
-                //IsVisibleBtnCancelFood = Visibility.Visible;
-
                 FoodService.Instance.InsertFood(FoodSelectedEdit.Name, FoodCategorySelected.Id, FoodSelectedEdit.Price);
                 FoodSelectedEdit = new Food();
 
                 MessageBox.Show("Success", "Info", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.No);
 
                 GetAllFoods();
-
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
         }
-
-        //private void CancelEditFood(object o)
-        //{
-        //    try
-        //    {
-        //        _isEdit = false;
-        //        IsVisibleBtnAddTable = Visibility.Visible;
-        //        IsVisibleBtnSaveTable = Visibility.Hidden;
-        //        IsVisibleBtnEditTable = Visibility.Visible;
-        //        IsVisibleBtnCancelTable = Visibility.Hidden;
-
-        //        TableSelectedEdit = new Table();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex);
-        //    }
-        //}
 
         private void DeleteFood(object o)
         {
@@ -1088,12 +903,6 @@ namespace WPF_CafeManagement.ViewModel
                 FoodSelectedEdit = new Food(FoodSelected.Id, FoodSelected.Name, FoodSelected.CategoryId, FoodSelected.Price);
 
                 var result = MessageBox.Show("You are sure delete item?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
-
-                //_isEditFood = false;
-                //IsVisibleBtnAddFood = Visibility.Visible;
-                //IsVisibleBtnSaveFood = Visibility.Hidden;
-                //IsVisibleBtnEditFood = Visibility.Visible;
-                //IsVisibleBtnCancelFood = Visibility.Hidden;
 
                 if (result == MessageBoxResult.Yes)
                 {
@@ -1255,7 +1064,6 @@ namespace WPF_CafeManagement.ViewModel
         {
             try
             {
-                // Tables = TableService.Instance.LoadTableList();
                 Users = AccountService.Instance.GetListAccount();
             }
             catch (Exception ex)
@@ -1268,7 +1076,6 @@ namespace WPF_CafeManagement.ViewModel
         {
             try
             {
-                
             }
             catch (Exception ex)
             {
@@ -1276,7 +1083,7 @@ namespace WPF_CafeManagement.ViewModel
             }
         }
 
-        #endregion Food
+        #endregion Account
 
         #endregion Methodes
     }
