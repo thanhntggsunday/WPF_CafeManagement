@@ -128,6 +128,11 @@ namespace WPF_CafeManagement.ViewModel
                     _categorySelected = value;
                     OnPropertyChanged();
                 }
+                if (CategorySelected != null)
+                {
+                    CategorySelectedEdit = new Category(CategorySelected.Id, CategorySelected.Name);
+                }
+               
             }
         }
 
@@ -139,7 +144,7 @@ namespace WPF_CafeManagement.ViewModel
                 if (_categorySelectedEdit != value)
                 {
                     _categorySelectedEdit = value;
-                    OnPropertyChanged("CategorySelectedEdit");
+                    OnPropertyChanged();
                 }
             }
         }
