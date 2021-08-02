@@ -10,7 +10,6 @@ namespace WPF_CafeManagement.Service
     public class BillInfoService : ServiceBase
     {
         private static BillInfoService _instance;
-
         private BillInfoService()
         {
         }
